@@ -15,19 +15,6 @@ public class AnnotationDatabaseImpl extends AnnotationDatabase {
         Set<String> fieldNameSet = null;
 
 
-        annotationClassName = "com.google.inject.Inject";
-        mapClassWithInjectionNameToFieldSet = mapAnnotationToMapClassWithInjectionNameToFieldSet.get(annotationClassName);
-        if( mapClassWithInjectionNameToFieldSet == null ) {
-            mapClassWithInjectionNameToFieldSet = new HashMap<String, Set<String>>();
-            mapAnnotationToMapClassWithInjectionNameToFieldSet.put(annotationClassName, mapClassWithInjectionNameToFieldSet);
-        }
-
-        fieldNameSet = new HashSet<String>();
-        fieldNameSet.add("notificationManager");
-        fieldNameSet.add("vibrator");
-        mapClassWithInjectionNameToFieldSet.put("com.meihua.roboguicetest.MainActivity", fieldNameSet);
-
-
         annotationClassName = "roboguice.inject.InjectView";
         mapClassWithInjectionNameToFieldSet = mapAnnotationToMapClassWithInjectionNameToFieldSet.get(annotationClassName);
         if( mapClassWithInjectionNameToFieldSet == null ) {
@@ -36,19 +23,12 @@ public class AnnotationDatabaseImpl extends AnnotationDatabase {
         }
 
         fieldNameSet = new HashSet<String>();
-        fieldNameSet.add("textView");
-        mapClassWithInjectionNameToFieldSet.put("com.meihua.roboguicetest.MainActivity", fieldNameSet);
-
-
-        annotationClassName = "roboguice.inject.InjectResource";
-        mapClassWithInjectionNameToFieldSet = mapAnnotationToMapClassWithInjectionNameToFieldSet.get(annotationClassName);
-        if( mapClassWithInjectionNameToFieldSet == null ) {
-            mapClassWithInjectionNameToFieldSet = new HashMap<String, Set<String>>();
-            mapAnnotationToMapClassWithInjectionNameToFieldSet.put(annotationClassName, mapClassWithInjectionNameToFieldSet);
-        }
+        fieldNameSet.add("button");
+        mapClassWithInjectionNameToFieldSet.put("com.meihua.roboguicetest.SecondActivity", fieldNameSet);
 
         fieldNameSet = new HashSet<String>();
-        fieldNameSet.add("name");
+        fieldNameSet.add("button");
+        fieldNameSet.add("textView");
         mapClassWithInjectionNameToFieldSet.put("com.meihua.roboguicetest.MainActivity", fieldNameSet);
 
     }
@@ -60,15 +40,14 @@ public class AnnotationDatabaseImpl extends AnnotationDatabase {
     }
     
     public void fillClassesContainingInjectionPointSet(HashSet<String> classesContainingInjectionPointsSet) {
+        classesContainingInjectionPointsSet.add("com.meihua.roboguicetest.SecondActivity");
         classesContainingInjectionPointsSet.add("com.meihua.roboguicetest.MainActivity");
     }
     
 
     public void fillBindableClasses(HashSet<String> injectedClasses) {
         injectedClasses.add("android.widget.TextView");
-        injectedClasses.add("android.app.NotificationManager");
-        injectedClasses.add("java.lang.String");
-        injectedClasses.add("android.os.Vibrator");
+        injectedClasses.add("android.widget.Button");
 
         if(FragmentUtil.hasNative) {
             injectedClasses.add("android.app.FragmentManager");
